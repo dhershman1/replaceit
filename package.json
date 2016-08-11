@@ -1,0 +1,15 @@
+{
+  "name": "better-replace",
+  "version": "1.0.0",
+  "description": "replace file strings quickly",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "replace",
+    "files"
+  ],
+  "author": "Dustin Hershman",
+  "license": "ISC"
+}
