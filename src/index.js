@@ -1,16 +1,8 @@
 'use strict';
+
 const fs = require('fs');
 const path = require('path');
 
-//Options
-// Regex
-// Path
-// replacement
-// async
-// loop
-
-//This will go through files and replace strings according to your regex, supports the ability to use a function in the replacement property instead of a string.
-//
 module.exports = (options) => {
 	if (!options.regex || !options.replacement || !options.path) {
 		return console.error('No Regex or Replacement Provided');
@@ -46,7 +38,7 @@ module.exports = (options) => {
 						throw err;
 					}
 
-					text = replaceifyText(text, file);
+					text = replaceifyText(text);
 					fs.writeFile(file, text, (err) => {
 						if (err) throw err;
 					});
@@ -68,27 +60,26 @@ module.exports = (options) => {
 		if (stats.isSymbolicLink()) return;
 
 		let isFile = stats.isFile();
-
 		if (isFile) {
 			let text = fs.readFileSync(file, 'utf-8');
 
-			text = replaceifyText(text, file);
+			text = replaceifyText(text);
 
 			fs.writeFileSync(file, text);
 		} else if (stats.isDirectory() && opts.loop) {
 			let files = fs.readdirSync(file);
 			for (var i = 0; i < files.length; i++) {
-				replaceifySync(path.join(file, file[i]));
+				replaceifySync(path.join(file, files[i]));
 			}
 		}
 	}
 
-	function replaceifyText(text, file) {
+	function replaceifyText(text) {
 		let match = text.match(opts.regex);
 		if (!match) return null;
-		console.log(opts.regex);
 		if (typeof opts.replacement === 'object') {
 			return text.replace(opts.regex, matched => {
+				console.log(opts.replacement[matched]);
 				return opts.replacement[matched];
 			});
 		} else {
