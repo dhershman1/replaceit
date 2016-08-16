@@ -24,3 +24,8 @@ replacement accepts both a string or an object of strings. For example:
 ```
 
 This can be as long as you want, and if your regex finds a match that match will be used to find the property of the object and replace it with that value.
+
+## Known Issues
+* There seems to be an issue when claling replaceify with a for loop
+* Still some Sync related issues (might contribute to the above issue)
+* Replaces files with null, or incorrect text when provided (need some better catches)
