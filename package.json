@@ -9,8 +9,13 @@
   "keywords": [
     "replace",
     "files",
-    "strings"
+    "strings",
+    "recursive"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/dhershman/replaceit/overview"
+  },
   "author": "Killparadise",
   "license": "ISC"
 }
