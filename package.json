@@ -1,5 +1,5 @@
 {
-  "name": "better-replace",
+  "name": "replaceit",
   "version": "1.0.0",
   "description": "replace file strings quickly",
   "main": "src/index.js",
@@ -8,8 +8,9 @@
   },
   "keywords": [
     "replace",
-    "files"
+    "files",
+    "strings"
   ],
-  "author": "Dustin Hershman",
+  "author": "Killparadise",
   "license": "ISC"
 }
