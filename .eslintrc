@@ -1,0 +1,50 @@
+{
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "ecmaFeatures": {
+        "arrowFunctions": true,
+        "blockBindings": true,
+        "classes": true,
+        "generators": true,
+        "templateStrings": true
+    },
+    "globals": {
+        "$": true,
+        "_": true,
+        "getTemplate": true,
+        "describe": true,
+        "afterEach": true,
+        "it": true,
+        "after": true,
+        "before": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "rules": {
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-debugger": "warn",
+        "no-irregular-whitespace": "error",
+        "comma-dangle": [
+            "warn",
+            "never"
+        ],
+        "default-case": "warn",
+        "block-scoped-var": "warn",
+        "no-unused-vars": "warn",
+        "no-redeclare": "error",
+        "eqeqeq": "warn",
+        "block-spacing": ["warn", "always"],
+        "no-console": "warn"
+    }
+}

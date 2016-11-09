@@ -1,0 +1,4 @@
+*.log
+node_modules/
+Thumbs.db
+core/public/build

@@ -1,21 +1,25 @@
 {
   "name": "replaceit",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "replace file strings quickly",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/test.js"
   },
   "keywords": [
     "replace",
     "files",
-    "strings",
-    "recursive"
+    "strings"
   ],
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/dhershman/replaceit/overview"
+    "url": "https://bitbucket.org/dhershman/replaceit"
   },
-  "author": "Killparadise",
-  "license": "ISC"
+  "homepage": "http://echotechstudio.com",
+  "author": "Dustin Hershman <dustinh17@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  }
 }

@@ -17,41 +17,45 @@ module.exports = (options) => {
 	if (!opts.async) {
 		replaceifySync(opts.path);
 	} else {
-		replaceify(opts.path);
+		return replaceify(opts.path);
 	}
 
 	function replaceify(file) {
-		fs.lstat(file, (err, stats) => {
-			if (err) throw err;
+		return new Promise((resolve, reject) => {
+			fs.lstat(file, (err, stats) => {
+				if (err) reject(err);
 
-			//Don't follow symbolic links yo
-			if (stats.isSymbolicLink()) return;
+				//Don't follow symbolic links yo
+				if (stats.isSymbolicLink()) return;
 
-			let isFile = stats.isFile();
-			if (isFile) {
-				fs.readFile(file, 'utf-8', (err, text) => {
-					if (err) {
-						if (err.code === 'EMFILE') {
-							console.log('Too many files, try running again without async');
-							process.exit(1);
+				let isFile = stats.isFile();
+				if (isFile) {
+					fs.readFile(file, 'utf-8', (err, text) => {
+						if (err) {
+							if (err.code === 'EMFILE') {
+								console.log('Too many files, try running again without async');
+								process.exit(1);
+							}
+							reject(err);
 						}
-						throw err;
-					}
 
-					text = replaceifyText(text);
-					fs.writeFile(file, text, (err) => {
-						if (err) throw err;
+						text = replaceifyText(text);
+						fs.writeFile(file, text, (err) => {
+							if (err)  reject(err);
+							resolve();
+						});
 					});
-				})
-			} else if (stats.isDirectory() && opts.loop) {
-				fs.readdir(file, (err, files) => {
-					if (err) throw err;
-					for (var i = 0; i < files.length; i++) {
-						replaceify(path.join(file, files[i]));
-					}
-				});
-			}
+				} else if (stats.isDirectory() && opts.loop) {
+					fs.readdir(file, (err, files) => {
+						if (err) reject(err);
+						for (var i = 0; i < files.length; i++) {
+							replaceify(path.join(file, files[i]));
+						}
+					});
+				}
+			});
 		});
+
 	}
 
 	function replaceifySync(file) {
@@ -79,7 +83,6 @@ module.exports = (options) => {
 		if (!match) return null;
 		if (typeof opts.replacement === 'object') {
 			return text.replace(opts.regex, matched => {
-				console.log(opts.replacement[matched]);
 				return opts.replacement[matched];
 			});
 		} else {
