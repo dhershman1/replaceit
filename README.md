@@ -1,3 +1,5 @@
++[![build-status](https://pipelines-badges-service.useast.staging.atlassian.io/badge/atlassian/confluence-web-components.svg)](https://bitbucket.org/atlassian/replaceit/addon/pipelines/home)
+
 ## Info
 Goes through files and replaces determined text, currently does not support symbolic links however.
 
