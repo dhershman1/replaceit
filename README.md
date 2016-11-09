@@ -2,6 +2,12 @@
 Goes through files and replaces determined text, currently does not support symbolic links however.
 
 ## How To
+
+Install with npm
+```
+npm i replaceit
+```
+
 To use Replaceify simply require it and use it as a function
 
 ```js
