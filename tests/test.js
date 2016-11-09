@@ -8,7 +8,6 @@ function writeResults(file, cb) {
 	fs.readFile(file, 'utf-8', (err, contents) => {
 		if (err) cb(err);
 		fs.writeFile('./tests/results.txt', contents, (err) => {
-			console.log(contents);
 			if (err) cb(err);
 			cb();
 		});
