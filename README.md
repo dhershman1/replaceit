@@ -10,6 +10,8 @@ Install with npm
 npm i replaceit
 ```
 
+Run unit tests with `npm test' make sure you either do an npm i inside pathit or install mocha and chai before hand since the tests require these modules.
+
 To use Replaceify simply require it and use it as a function
 
 ```js
