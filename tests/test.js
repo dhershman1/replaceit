@@ -1,3 +1,5 @@
+'ust strict';
+
 const expect = require('chai').expect;
 const fs = require('fs');
 const replaceit = require('../src/index.js');
